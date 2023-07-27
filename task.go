@@ -43,7 +43,7 @@ func isOK(val string) bool {
 			is = false
 		}
 
-		if !(isRom(valSplit[0]) && isRom(valSplit[2][0:len(valSplit[2])-2]) || isArab(valSplit[0]) && isArab(valSplit[2][0:len(valSplit[2])-2])) {
+		if !(isRom(valSplit[0]) && isRom(strings.TrimSpace(valSplit[2])) || isArab(valSplit[0]) && isArab(strings.TrimSpace(valSplit[2]))) {
 			is = false
 		}
 	} else {
@@ -87,12 +87,12 @@ func calc(input string) string {
 
 		if isArab(inputSplit[0]) {
 			num1, _ = strconv.Atoi(inputSplit[0])
-			num2, _ = strconv.Atoi(inputSplit[2][0 : len(inputSplit[2])-2])
+			num2, _ = strconv.Atoi(strings.TrimSpace(inputSplit[2]))
 
 		}
 		if isRom(inputSplit[0]) {
 			num1 = romToArab(inputSplit[0])
-			num2 = romToArab(inputSplit[2][0 : len(inputSplit[2])-2])
+			num2 = romToArab(strings.TrimSpace(inputSplit[2]))
 		}
 
 		switch inputSplit[1] {
